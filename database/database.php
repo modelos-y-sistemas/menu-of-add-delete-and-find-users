@@ -2,7 +2,7 @@
   $server = 'localhost';
   $username = 'root';
   $password = '123456789';
-  $database = ' menuadddeletefindusers';
+  $database = 'menuadddeletefindusers';
 
   try{
     $connection = new PDO("mysql:host=$server;dbname=$database;", $username, $password);
