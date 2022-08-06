@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Estructura de tabla para la tabla `users`
 --
 
-CREATE TABLE `usuarios` (
+CREATE TABLE `users` (
   `UserKey` int(3) NOT NULL,
   `Name` varchar(30) NOT NULL,
   `Surname` varchar(50) NOT NULL,
@@ -40,9 +40,9 @@ CREATE TABLE `usuarios` (
 --
 
 --
--- Indices de la tabla `usuarios`
+-- Indices de la tabla `users`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`UserKey`);
 
 --
@@ -50,9 +50,9 @@ ALTER TABLE `usuarios`
 --
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT de la tabla `users`
 --
-ALTER TABLE `usuarios`
+ALTER TABLE `users`
   MODIFY `UserKey` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
