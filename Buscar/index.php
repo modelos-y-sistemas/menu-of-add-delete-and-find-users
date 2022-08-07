@@ -1,3 +1,15 @@
+<?php
+  
+  if($_POST){
+
+    $search = $_POST['search'];
+    require("../class/user.php");
+    $users;
+
+    $users = user::find($search);
+  }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,23 +20,23 @@
 </head>
 <body>
   <form action="./" method="post" class="form">
-    <div class="filtro">
-      <p class="filtro__instruction">Filtrar por:</p>    
+    <div class="filter">
+      <p class="filter__instruction">Filtrar por:</p>    
       <div class="control">
-        <label class="filtro__label" for="name">Nombre</label>
-        <input class="filtro__input" type="checkbox" name="name" id="name">
+        <label class="filter__label" for="name">Nombre</label>
+        <input class="filter__input" type="checkbox" name="name" id="name">
       </div>
       <div class="control">
-        <label class="filtro__label" for="surname">Apellido</label>
-        <input class="filtro__input" type="checkbox" name="surname" id="surname">
+        <label class="filter__label" for="surname">Apellido</label>
+        <input class="filter__input" type="checkbox" name="surname" id="surname">
       </div>
       <div class="control">
-        <label class="filtro__label" for="email">Email</label>
-        <input class="filtro__input" type="checkbox" name="email" id="email">
+        <label class="filter__label" for="email">Email</label>
+        <input class="filter__input" type="checkbox" name="email" id="email">
       </div>
       <div class="control">
-        <label class="filtro__label" for="userKey">ID</label>
-        <input class="filtro__input" type="checkbox" name="userKey" id="userKey">
+        <label class="filter__label" for="userKey">ID</label>
+        <input class="filter__input" type="checkbox" name="userKey" id="userKey">
       </div>
     </div>
     <div class="search control">
@@ -44,18 +56,18 @@
       </tr>
     </thead>
     <tbody class="list-users__tbody">
-      <tr class="list-users__tr">
-        <td class="list-users__td"> Jeremias </td>
-        <td class="list-users__td"> Cuello </td>
-        <td class="list-users__td"> cuellojeremiasnatanael@gmail.com </td>
-        <td class="list-users__td"> 21 </td>
-      </tr>
-      <tr class="list-users__tr">
-        <td class="list-users__td"> Jesus </td>
-        <td class="list-users__td"> Zerda </td>
-        <td class="list-users__td"> jesuszerda@gmail.com </td>
-        <td class="list-users__td"> 35 </td>
-      </tr>
+      <?php
+        foreach($users as $user){
+      ?>
+        <tr class="list-users__tr">
+          <td class="list-users__td"> <?php echo $user['Name']; ?> </td>
+          <td class="list-users__td"> <?php echo $user['Surname']; ?> </td>
+          <td class="list-users__td"> <?php echo $user['Email']; ?> </td>
+          <td class="list-users__td"> <?php echo $user['UserKey']; ?> </td>
+        </tr>
+      <?php
+        }
+      ?>
     </tbody>
   </table>
 </body>
