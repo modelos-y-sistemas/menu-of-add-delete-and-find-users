@@ -4,10 +4,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/main.js"></script>
   <title>Eliminar Usuario</title>
 </head>
 <body>
-  <form action="./" method="post" class="form">
+  <form method="post" class="form" onsubmit="return Buscar();">
     <div class="filtro">
       <p class="filtro__instruction">Filtrar por:</p>    
       <div class="control">
@@ -34,35 +36,23 @@
     <input class="form__submit" type="submit" name="submit" id="submit" value="Buscar Usuario(s)">
   </form>
 
-  <table class="list-users" border="1">
-    <thead class="list-users__thead">
-      <tr class="list-users__tr">
-        <th class="list-users__th"> Nombre </th>
-        <th class="list-users__th"> Apellido </th>
-        <th class="list-users__th"> Email </th>
-        <th class="list-users__th"> ID </th>
-        <th class="list-users__th"> Seleccionar </th>
-      </tr>
-    </thead>
-    <tbody class="list-users__tbody">
-      <tr class="list-users__tr">
-        <td class="list-users__td"> Jeremias </td>
-        <td class="list-users__td"> Cuello </td>
-        <td class="list-users__td"> cuellojeremiasnatanael@gmail.com </td>
-        <td class="list-users__td"> 21 </td>
-        <td class="list-users__td"> <input type="checkbox" name="user21" id="user21"> </td>
-      </tr>
-      <tr class="list-users__tr">
-        <td class="list-users__td"> Jesus </td>
-        <td class="list-users__td"> Zerda </td>
-        <td class="list-users__td"> jesuszerda@gmail.com </td>
-        <td class="list-users__td"> 35 </td>
-        <td class="list-users__td"> <input type="checkbox" name="user35" id="user35"> </td>
-      </tr>
-    </tbody>
-  </table>
+  <form name="formel" id="formel" method="post" onsubmit="return Eliminar();">
+    <table class="list-users" border="1">
+      <thead class="list-users__thead">
+        <tr class="list-users__tr">
+          <th class="list-users__th"> Nombre </th>
+          <th class="list-users__th"> Apellido </th>
+          <th class="list-users__th"> Email </th>
+          <th class="list-users__th"> ID </th>
+          <th class="list-users__th"> Seleccionar </th>
+        </tr>
+      </thead>
+      <tbody class="list-users__tbody">
+        
+      </tbody>
+    </table>
 
-  <form action="./" method="post">
+  
     <input type="submit" value="Eliminar Usuarios(s)">
   </form>
 </body>

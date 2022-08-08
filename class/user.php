@@ -7,6 +7,7 @@ function validate(){
   if($_POST){
     $pathname=$_POST["pathname"];
     $pathname=strval($pathname);
+
     if(strpos($pathname,'Agregar')){
     $name = $_POST["name"];
     $surname = $_POST["surname"];
@@ -20,15 +21,26 @@ function validate(){
     }
     }
     elseif (strpos($pathname,'Eliminar')) {
-      
+      //$search=$_POST['search'];
+      $user_keyarr=$_POST['user_keyarr'];
+      $users;
+
+
+      $o_user = new user();
+      $o_user->delete($user_keyarr);
+
+      //$users = user::delete($user_keyarr);
+      //$users = user::find($search);
+  
+      //echo json_encode($users);
     }
     else{
       $search = $_POST['search'];
-    $users;
+      $users;
   
-    $users = user::find($search);
+      $users = user::find($search);
   
-    echo json_encode($users);
+      echo json_encode($users);
     }
   }
 }
@@ -64,17 +76,30 @@ class user{
       $message = '<script> alert("ERROR: usuario no creado"); </script>';
     }
   }
-  public function delete(){
+  public function delete($user_keyarr){
     
     include '../database/database.php';
     $message = '';
 
-    $query = 'DELETE FROM users WHERE users.UserKey = :user_key';
-    
+    for($i=0;$i<count($user_keyarr);$i++){
+      $ent=intval($user_keyarr[$i]);
+      $query = "DELETE FROM users WHERE UserKey = :ent";
+      $stmt=$connection->prepare($query);
+      $stmt->bindParam(':ent', $ent);
+      $stmt->execute();
+    }
+
+    /*$query = 'DELETE FROM users WHERE users.UserKey = :user_key';
+
     $stmt = $connection->prepare($query);
-    $stmt->bindParam(':user_key', $this.user_key);
+    $stmt->bindParam(':user_key', $this.user_key);*/
+
+    //$queryBus='SELECT * FROM users';
+    //$stmt = $connection->prepare($queryBus);
+    //return $stmt->fetchAll(PDO::FETCH_ASSOC);
     
     if ($stmt->execute()) {
+      //return $stmt->fetchAll(PDO::FETCH_ASSOC);
       $message = '<script> alert("USUARIO ELIMINADO"); </script>';
     } else {
       $message = '<script> alert("ERROR: usuario no eliminado"); </script>';
