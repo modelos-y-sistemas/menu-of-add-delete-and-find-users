@@ -7,7 +7,7 @@ function Buscar(){
         "pathname" : pathname
     };
     $.ajax({
-        url: "http://localhost/MYS/menu-of-add-delete-and-find-users/class/user.php",
+        url: "http://localhost/menu-of-add-delete-and-find-users/class/user.php",
         type: "post",
         data: parametros,
         success: function(data){
