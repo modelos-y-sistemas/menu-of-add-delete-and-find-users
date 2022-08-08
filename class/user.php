@@ -66,7 +66,7 @@ class user{
       $message = '<script> alert("ERROR: usuario no creado"); </script>';
     }
   }
-  public function delete(){
+  public static function delete($user){
     
     include '../database/database.php';
     $message = '';
@@ -74,7 +74,7 @@ class user{
     $query = 'DELETE FROM users WHERE users.UserKey = :user_key';
     
     $stmt = $connection->prepare($query);
-    $stmt->bindParam(':user_key', $this.user_key);
+    $stmt->bindParam(':user_key', $user['UserKey']);
     
     if ($stmt->execute()) {
       $message = '<script> alert("USUARIO ELIMINADO"); </script>';
