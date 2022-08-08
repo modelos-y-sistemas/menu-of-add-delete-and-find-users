@@ -1,17 +1,5 @@
-<?php
-  /*
-  if($_POST){
-
-    $search = $_POST['search'];
-    require("../class/user.php");
-    $users;
-
-    $users = user::find($search);
-  }*/
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,7 +9,6 @@
   <title>Buscar Usuario</title>
 </head>
 <body>
-        <!-- action="./" -->
   <form  method="post" class="form" onsubmit="return state();">
     <div class="filter">
       <p class="filter__instruction">Filtrar por:</p>    
@@ -59,20 +46,7 @@
       </tr>
     </thead>
     <tbody class="list-users__tbody">
-      <!--
-      <?php
-        //foreach($users as $user){
-      ?>
-        <tr class="list-users__tr">
-          <td class="list-users__td"> <//?php echo $user['Name']; ?> </td>
-          <td class="list-users__td"> <//?php echo $user['Surname']; ?> </td>
-          <td class="list-users__td"> <//?php echo $user['Email']; ?> </td>
-          <td class="list-users__td"> <//?php echo $user['UserKey']; ?> </td>
-        </tr>
-      <?php
-        //}
-      ?>
-      -->
+      
     </tbody>
   </table>
 </body>

@@ -5,20 +5,32 @@ validate();
 
 function validate(){
   if($_POST){
+
     $pathname=$_POST["pathname"];
     $pathname=strval($pathname);
+<<<<<<< HEAD
 
     if(strpos($pathname,'Agregar')){
     $name = $_POST["name"];
     $surname = $_POST["surname"];
     $email = $_POST["email"];
+=======
+>>>>>>> 38d87c4de8233cb239eaeda50236efd45a610242
 
-    if($name!=""&&$surname!=""&&$email!=""){
-    $o_user = new user($name, $surname, $email);
-    $o_user->add();
-    $resp=$o_user->to_string();
-    echo json_encode($resp);
+    if(strpos($pathname,'Agregar')){
+
+      $name = $_POST["name"];
+      $surname = $_POST["surname"];
+      $email = $_POST["email"];
+
+      if($name!=""&&$surname!=""&&$email!=""){
+        $o_user = new user($name, $surname, $email);
+        $o_user->add();
+        $resp=$o_user->to_string();
+        echo json_encode($resp);
+      }
     }
+<<<<<<< HEAD
     }
     elseif (strpos($pathname,'Eliminar')) {
       //$search=$_POST['search'];
@@ -33,18 +45,28 @@ function validate(){
       //$users = user::find($search);
   
       //echo json_encode($users);
+=======
+    else if (strpos($pathname,'Eliminar')) {
+
+>>>>>>> 38d87c4de8233cb239eaeda50236efd45a610242
     }
     else{
       $search = $_POST['search'];
       $users;
+<<<<<<< HEAD
   
       $users = user::find($search);
   
       echo json_encode($users);
+=======
+
+      $users = user::find($search);
+
+      echo json_encode($users); // codigo de capa logica no interactua con la capa interfaz, <echo> no va.
+>>>>>>> 38d87c4de8233cb239eaeda50236efd45a610242
     }
   }
 }
-
 
 class user{
   
@@ -76,7 +98,11 @@ class user{
       $message = '<script> alert("ERROR: usuario no creado"); </script>';
     }
   }
+<<<<<<< HEAD
   public function delete($user_keyarr){
+=======
+  public static function delete($user){
+>>>>>>> 38d87c4de8233cb239eaeda50236efd45a610242
     
     include '../database/database.php';
     $message = '';
@@ -92,11 +118,15 @@ class user{
     /*$query = 'DELETE FROM users WHERE users.UserKey = :user_key';
 
     $stmt = $connection->prepare($query);
+<<<<<<< HEAD
     $stmt->bindParam(':user_key', $this.user_key);*/
 
     //$queryBus='SELECT * FROM users';
     //$stmt = $connection->prepare($queryBus);
     //return $stmt->fetchAll(PDO::FETCH_ASSOC);
+=======
+    $stmt->bindParam(':user_key', $user['UserKey']);
+>>>>>>> 38d87c4de8233cb239eaeda50236efd45a610242
     
     if ($stmt->execute()) {
       //return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -117,7 +147,7 @@ class user{
     if ($stmt->execute()) {
       return $stmt->fetchAll(PDO::FETCH_ASSOC);
     } else {
-      $message = '<script> alert("ERROR: no se pudo ejecutar la consulta"); </>';
+      $message = '<script> alert("ERROR: no se pudo ejecutar la consulta"); </script>';
       return null;
     }
   }
