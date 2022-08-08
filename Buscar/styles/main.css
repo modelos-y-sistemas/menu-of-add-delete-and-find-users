@@ -1,0 +1,65 @@
+body{
+	background-color: #634646;
+	margin-top: 50px;
+	margin-left: 50px;
+}
+
+div{
+	position: relative;
+}
+
+form{
+	margin-top: 150px;
+}
+
+.control{
+	padding: 10px;
+	font-family: arial;
+	background-color: beige;
+	border-color: beige;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 50px;
+	margin-right: 1000px;
+	position: absolute;
+}
+
+.filtro__instruction{
+	font-size: 50px;
+	color: #926026;
+	font-family: arial;
+	font-weight: bold;
+	background-color: beige;
+	border-radius: 20px;
+	position: absolute;
+	padding: 10px;
+}
+
+#submit{
+	     left: 50px;
+	     position: relative;
+	     background-color: beige;
+	     border-width: 5px;
+	     border-color: beige;
+	     font-size: 20px;
+	     font-weight: bold;
+	     cursor: pointer;
+}
+
+.vam{
+	background-color: beige;
+	border-color: beige;
+	border-width: 5px;
+	border-radius: 10px;
+	font-weight: bold;
+	font-size: 20px;
+	cursor: pointer;
+}
+
+table{
+	background-color: beige;
+	font-family: arial;
+	font-size: 20px;
+	padding: 10px;
+	border-color: #926026;
+}
