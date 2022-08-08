@@ -1,6 +1,6 @@
 <?php
 
-  if($_POST)
+  /*if($_POST)
   {
     $name = $_POST["name"];
     $surname = $_POST["surname"];
@@ -10,7 +10,7 @@
 
     $o_user = new user($name, $surname, $email);
     $o_user->add();
-  }
+  }*/
 ?>
 
 <!DOCTYPE html>
@@ -19,10 +19,12 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/main.js"></script>
   <title>Agregar Usuario</title>
 </head>
 <body>
-  <form action="./" method="post">
+  <form method="post" class="form" onsubmit="return state();">
     <div class="control">
       <label for="name">Ingrese Nombre</label>
       <input type="text" name="name" id="name" require>
@@ -38,7 +40,10 @@
     <div class="control">
       <input type="submit" value="Agregar Usuario" id="submit" require>
     </div>
-    <?php echo "usuario agregado: <br>" . $o_user->to_string(); ?>
+    <div class="resp">
+
+    </div>
+    <?php //echo "usuario agregado: <br>" . $o_user->to_string(); ?>
   </form>
 </body>
 </html>

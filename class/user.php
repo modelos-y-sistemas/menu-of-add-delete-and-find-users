@@ -1,5 +1,39 @@
 <?php
 
+
+validate();
+
+function validate(){
+  if($_POST){
+    $pathname=$_POST["pathname"];
+    $pathname=strval($pathname);
+    if(strpos($pathname,'Agregar')){
+    $name = $_POST["name"];
+    $surname = $_POST["surname"];
+    $email = $_POST["email"];
+
+    if($name!=""&&$surname!=""&&$email!=""){
+    $o_user = new user($name, $surname, $email);
+    $o_user->add();
+    $resp=$o_user->to_string();
+    echo json_encode($resp);
+    }
+    }
+    elseif (strpos($pathname,'Eliminar')) {
+      
+    }
+    else{
+      $search = $_POST['search'];
+    $users;
+  
+    $users = user::find($search);
+  
+    echo json_encode($users);
+    }
+  }
+}
+
+
 class user{
   
   private $name;
@@ -54,7 +88,6 @@ class user{
 
     $search = "%" . $search . "%";
     $query = "SELECT * FROM users WHERE UserKey LIKE '$search' OR Name LIKE '$search' OR Surname LIKE '$search' OR Email LIKE '$search' ";
-    
     $stmt = $connection->prepare($query);
     if ($stmt->execute()) {
       return $stmt->fetchAll(PDO::FETCH_ASSOC);

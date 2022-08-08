@@ -1,5 +1,5 @@
 <?php
-  
+  /*
   if($_POST){
 
     $search = $_POST['search'];
@@ -7,7 +7,7 @@
     $users;
 
     $users = user::find($search);
-  }
+  }*/
 ?>
 
 <!DOCTYPE html>
@@ -16,10 +16,13 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/main.js"></script>
   <title>Buscar Usuario</title>
 </head>
 <body>
-  <form action="./" method="post" class="form">
+        <!-- action="./" -->
+  <form  method="post" class="form" onsubmit="return state();">
     <div class="filter">
       <p class="filter__instruction">Filtrar por:</p>    
       <div class="control">
@@ -56,18 +59,20 @@
       </tr>
     </thead>
     <tbody class="list-users__tbody">
+      <!--
       <?php
-        foreach($users as $user){
+        //foreach($users as $user){
       ?>
         <tr class="list-users__tr">
-          <td class="list-users__td"> <?php echo $user['Name']; ?> </td>
-          <td class="list-users__td"> <?php echo $user['Surname']; ?> </td>
-          <td class="list-users__td"> <?php echo $user['Email']; ?> </td>
-          <td class="list-users__td"> <?php echo $user['UserKey']; ?> </td>
+          <td class="list-users__td"> <//?php echo $user['Name']; ?> </td>
+          <td class="list-users__td"> <//?php echo $user['Surname']; ?> </td>
+          <td class="list-users__td"> <//?php echo $user['Email']; ?> </td>
+          <td class="list-users__td"> <//?php echo $user['UserKey']; ?> </td>
         </tr>
       <?php
-        }
+        //}
       ?>
+      -->
     </tbody>
   </table>
 </body>
