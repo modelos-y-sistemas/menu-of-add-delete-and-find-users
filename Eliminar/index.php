@@ -1,7 +1,7 @@
 <?php
   
   $message = "";
-
+/*
   if($_POST){
 
     include ('../class/user.php');
@@ -56,7 +56,7 @@
 
     return $users_keys;
   }
-
+*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -65,6 +65,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/main.js"></script>
   <title>Eliminar Usuario</title>
 </head>
 <body>
@@ -75,7 +77,7 @@
     </nav>
   </header>
 
-  <form action="./" method="post" class="form">
+  <form method="post" class="form" name="form" id="form" onsubmit="return Eliminar();">
     <div class="filter"> 
       <p class="filter__instruction">Filtrar por:</p>
       <div class="controls">
@@ -102,7 +104,7 @@
       <input class="search__input" type="text" name="search" id="search">
     </div>
     
-    <input class="form__submit" type="submit" name="submit_search" value="Buscar Usuario(s)">
+    <input class="form__submit" type="button" name="submit_search" value="Buscar Usuario(s)" onclick="return Buscar();">
 
     <table class="list-users" border="1">
       <thead class="list-users__thead">
@@ -116,17 +118,17 @@
       </thead>
       <tbody class="list-users__tbody">
         <?php
-          foreach($users as $user){
+          //foreach($users as $user){
         ?>
           <tr class="list-users__tr">
-            <td class="list-users__td"> <?php echo $user['Name']; ?> </td>
-            <td class="list-users__td"> <?php echo $user['Surname']; ?> </td>
-            <td class="list-users__td"> <?php echo $user['Email']; ?> </td>
-            <td class="list-users__td"> <?php echo $user['UserKey']; ?> </td>
-            <td class="list-users__td"> <input type="checkbox" name="user<?php echo $user['UserKey']; ?>" id="user<?php echo $user['UserKey']; ?>"> </td>
+            <td class="list-users__td"> <?php //echo $user['Name']; ?> </td>
+            <td class="list-users__td"> <?php //echo $user['Surname']; ?> </td>
+            <td class="list-users__td"> <?php //echo $user['Email']; ?> </td>
+            <td class="list-users__td"> <?php //echo $user['UserKey']; ?> </td>
+            <td class="list-users__td"> <input type="checkbox" name="user<?php //echo $user['UserKey']; ?>" id="user<?php //echo $user['UserKey']; ?>"> </td>
           </tr>
         <?php    
-          }
+          //}
         ?>
       </tbody>
     </table>

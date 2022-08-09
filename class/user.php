@@ -3,6 +3,30 @@
 
 validate();
 
+function get_users_keys_selected(){
+    
+  $search = $_POST['search'];
+  $i = 0;
+
+  $users = user::find($search);
+  $users_keys = array();
+
+  foreach($users as $user){
+    
+    $number_key = $user['UserKey'];
+    
+    if(isset($_POST['user' . $number_key])){ // cada check tiene como 'name' -> "user + <UserKey>"
+      $users_keys[$i] = $number_key;
+      $i++;
+    }
+  }
+  foreach($users_keys as $key){
+    // echo $key . "<br>";
+  }
+
+  return $users_keys;
+}
+
 function validate(){
   if($_POST){
 
@@ -23,6 +47,24 @@ function validate(){
       }
     }
     else if (strpos($pathname,'Eliminar')) {
+
+      try{
+        $users_key_selected = get_users_keys_selected();
+
+        $userkeyarr=$_POST["user_keyarr"];
+        foreach($userkeyarr as $user){
+          //$user_selected = user::get_user($userkeyarr);
+          user::delete($user);
+          /*if(user::delete($userkeyarr)){
+            $message = "el(los) usuario(s) fueron eliminados";
+          } else{
+            $message = "el(los) usuario(s) no fueron eliminados";
+          }*/
+        }
+      }
+      catch(PDOException $e){
+        $message = "ERROR: No se puede eliminar el(los) usuario(s)";
+      }
 
     }
     else{
@@ -65,12 +107,12 @@ class user{
     
     include '../database/database.php';
     
-    $query = 'DELETE FROM users WHERE users.UserKey = :user_key';
+    $query = "DELETE FROM users WHERE UserKey = $user";
     
     $stmt = $connection->prepare($query);
-    $stmt->bindParam(':user_key', $user['UserKey']);
+    //$stmt->bindParam(':user_key', $user);
     
-    return $stmt->execute() ? true : null;
+    $stmt->execute();
   }
   public static function find($search){
 
