@@ -51,7 +51,7 @@
       }
     }
     foreach($users_keys as $key){
-      echo $key . "<br>";
+      // echo $key . "<br>";
     }
 
     return $users_keys;
@@ -59,32 +59,42 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
   <title>Eliminar Usuario</title>
 </head>
 <body>
+
+  <header class="header">
+    <nav class="nav">
+      <button class="nav__menu" onclick="window.location.href = '../index.php'"> Volver al menú </button>
+    </nav>
+  </header>
+
   <form action="./" method="post" class="form">
-    <div class="filtro">
-      <p class="filtro__instruction">Filtrar por:</p>    
-      <div class="control">
-        <label class="filtro__label" for="name">Nombre</label>
-        <input class="filtro__input" type="checkbox" name="name" id="name">
-      </div>
-      <div class="control">
-        <label class="filtro__label" for="surname">Apellido</label>
-        <input class="filtro__input" type="checkbox" name="surname" id="surname">
-      </div>
-      <div class="control">
-        <label class="filtro__label" for="email">Email</label>
-        <input class="filtro__input" type="checkbox" name="email" id="email">
-      </div>
-      <div class="control">
-        <label class="filtro__label" for="userKey">ID</label>
-        <input class="filtro__input" type="checkbox" name="userKey" id="userKey">
+    <div class="filter"> 
+      <p class="filter__instruction">Filtrar por:</p>
+      <div class="controls">
+        <div class="control">
+          <label class="filter__label" for="name">Nombre</label>
+          <input class="filter__input" type="checkbox" name="name" id="name">
+        </div>
+        <div class="control">
+          <label class="filter__label" for="surname">Apellido</label>
+          <input class="filter__input" type="checkbox" name="surname" id="surname">
+        </div>
+        <div class="control">
+          <label class="filter__label" for="email">E-mail</label>
+          <input class="filter__input" type="checkbox" name="email" id="email">
+        </div>
+        <div class="control">
+          <label class="filter__label" for="userKey">ID</label>
+          <input class="filter__input" type="checkbox" name="userKey" id="userKey">
+        </div>
       </div>
     </div>
     <div class="search control">
@@ -92,7 +102,7 @@
       <input class="search__input" type="text" name="search" id="search">
     </div>
     
-    <input class="form__submit" type="submit" name="submit_search" id="submit" value="Buscar Usuario(s)">
+    <input class="form__submit" type="submit" name="submit_search" value="Buscar Usuario(s)">
 
     <table class="list-users" border="1">
       <thead class="list-users__thead">
