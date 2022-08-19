@@ -46,28 +46,8 @@ function validate(){
         echo json_encode($resp);
       }
     }
-    else if (strpos($pathname,'Eliminar')) {
-
-      try{
-        $users_key_selected = get_users_keys_selected();
-
-        $userkeyarr=$_POST["user_keyarr"];
-        foreach($userkeyarr as $user){
-          //$user_selected = user::get_user($userkeyarr);
-          user::delete($user);
-          /*if(user::delete($userkeyarr)){
-            $message = "el(los) usuario(s) fueron eliminados";
-          } else{
-            $message = "el(los) usuario(s) no fueron eliminados";
-          }*/
-        }
-      }
-      catch(PDOException $e){
-        $message = "ERROR: No se puede eliminar el(los) usuario(s)";
-      }
-
-    }
-    else{
+    
+    else if($pathname=="Buscar"){
       $search = $_POST['search'];
       $users;
 
@@ -75,6 +55,26 @@ function validate(){
 
       echo json_encode($users); // codigo de capa logica no interactua con la capa interfaz, <echo> no va.
     }
+
+    else{
+
+      try{
+        $users_key_selected = get_users_keys_selected();
+        
+        foreach($users_key_selected as $user_key_selected){
+          $user_selected = user::get_user($user_key_selected);
+          if(user::delete($user_selected)){
+            $message = "el(los) usuario(s) fueron eliminados";
+          } else{
+            $message = "el(los) usuario(s) no fueron eliminados";
+          }
+        }
+      }
+      catch(PDOException $e){
+        $message = "ERROR: No se puede eliminar el(los) usuario(s)";
+      }
+    }
+
   }
 }
 
@@ -106,13 +106,13 @@ class user{
   public static function delete($user){
     
     include '../database/database.php';
-    
-    $query = "DELETE FROM users WHERE UserKey = $user";
+
+    $query = 'DELETE FROM users WHERE users.UserKey = :user_key';
     
     $stmt = $connection->prepare($query);
-    //$stmt->bindParam(':user_key', $user);
+    $stmt->bindParam(':user_key', $user['UserKey']);
     
-    $stmt->execute();
+    return $stmt->execute() ? true : null;
   }
   public static function find($search){
 
