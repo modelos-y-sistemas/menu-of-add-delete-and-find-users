@@ -2,7 +2,7 @@
 function state()
 {
     var search=$('#search').val();
-    var pathname = window.location.pathname;
+    var pathname = "Buscar";
     var parametros={
         "search" : search,
         "pathname" : pathname
