@@ -15,7 +15,8 @@ function Buscar(){
             var tabla;
             for(var i=0;i<resp.length;i++){
                 tabla+='<tr class="list-users__tr"><td class="list-users__td">'+resp[i].Name+'</td><td class="list-users__td">'+resp[i].Surname+
-                '</td><td class="list-users__td">'+resp[i].Email+'</td><td class="list-users__td">'+resp[i].UserKey+'</td><td class="list-users__td"> <input type="checkbox" name="'
+                '</td><td class="list-users__td">'+resp[i].Email+'</td><td class="list-users__td">'+resp[i].UserKey+
+                '</td><td class="list-users__td"> <input type="checkbox" name="user'
                 +resp[i].UserKey+'" id="'+resp[i].UserKey+'"> </td></tr>';
             }
             /*var p=document.getElementsByClassName("list-users__tbody");
@@ -53,9 +54,9 @@ function Eliminar(){
     };
 
     $.ajax({
-        url: "http://localhost/MYS/menu-of-add-delete-and-find-users/class/user.php",
+        url: "http://localhost/menu-of-add-delete-and-find-users/class/user.php",
         type: "post",
-        data: parametros,
+        data: $('#form').serialize(),
         success: function(data){
             alert("zz");
             //Buscar();
