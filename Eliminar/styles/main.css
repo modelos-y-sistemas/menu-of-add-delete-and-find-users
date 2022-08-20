@@ -58,7 +58,8 @@ body{
   display: flex;
   flex-direction: row;
   justify-items: center;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .form__submit{
@@ -101,15 +102,3 @@ body{
 	font-size: 20px;
 	border-color: #926026;
 }
-
-
-
-/* #deletton{
-  
-  background-color: beige;
-  border-width: 5px;
-  border-color: beige;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-} */

@@ -10,15 +10,5 @@ function state(){
         "email" : email,
         "pathname" : pathname
     };
-    $.ajax({
-        url: "http://localhost/menu-of-add-delete-and-find-users/class/user.php", 
-        type: "post",
-        data: parametros,
-        success: function(data){
-            var resp=JSON.parse(data);
-            var r='Usuario agregado: <br>'+resp;
-            $('div.resp').html(r);
-        }
-    });
     return false;
 }
