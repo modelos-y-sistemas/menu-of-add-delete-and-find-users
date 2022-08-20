@@ -77,7 +77,7 @@
     </nav>
   </header>
 
-  <form method="post" class="form" name="form" id="form">
+  <form method="post" class="form" name="form" id="form" onsubmit="return Eliminar();">
     <div class="filter"> 
       <p class="filter__instruction">Filtrar por:</p>
       <div class="controls">
@@ -104,7 +104,7 @@
       <input class="search__input" type="text" name="search" id="search">
     </div>
     
-    <input class="form__submit" type="button" name="button_search" id="button_search" value="Buscar Usuario(s)">
+    <input class="form__submit" type="button" name="submit_search" value="Buscar Usuario(s)" onclick="return Buscar();">
 
     <table class="list-users" border="1">
       <thead class="list-users__thead">
@@ -117,10 +117,23 @@
         </tr>
       </thead>
       <tbody class="list-users__tbody">
+        <?php
+          //foreach($users as $user){
+        ?>
+          <tr class="list-users__tr">
+            <td class="list-users__td"> <?php //echo $user['Name']; ?> </td>
+            <td class="list-users__td"> <?php //echo $user['Surname']; ?> </td>
+            <td class="list-users__td"> <?php //echo $user['Email']; ?> </td>
+            <td class="list-users__td"> <?php //echo $user['UserKey']; ?> </td>
+            <td class="list-users__td"> <input type="checkbox" name="user<?php //echo $user['UserKey']; ?>" id="user<?php //echo $user['UserKey']; ?>"> </td>
+          </tr>
+        <?php    
+          //}
+        ?>
       </tbody>
     </table>
 
-    <input class="form__submit" type="submit" name="button_delete" id="button_delete" value="Eliminar Usuario(s)" onclick="Eliminar();">
+    <input class="form__submit" type="submit" name="submit_delete" id="submit_delete" value="Eliminar Usuario(s)">
   </form>
   
   <p id="message"> <?= $message; ?> </p>

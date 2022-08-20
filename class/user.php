@@ -1,8 +1,37 @@
 <?php
 
+
+validate();
+
+function get_users_keys_selected(){
+    
+  $search = $_POST['search'];
+  $i = 0;
+
+  $users = user::find($search);
+  $users_keys = array();
+
+  foreach($users as $user){
+    
+    $number_key = $user['UserKey'];
+    
+    if(isset($_POST['user' . $number_key])){ // cada check tiene como 'name' -> "user + <UserKey>"
+      $users_keys[$i] = $number_key;
+      $i++;
+    }
+  }
+  foreach($users_keys as $key){
+    // echo $key . "<br>";
+  }
+
+  return $users_keys;
+}
+
+function validate(){
   if($_POST){
 
-    $pathname = $_POST["pathname"];
+    $pathname=$_POST["pathname"];
+    $pathname=strval($pathname);
 
     if(strpos($pathname,'Agregar')){
 
@@ -10,10 +39,10 @@
       $surname = $_POST["surname"];
       $email = $_POST["email"];
 
-      if($name != "" && $surname != "" && $email != ""){
+      if($name!=""&&$surname!=""&&$email!=""){
         $o_user = new user($name, $surname, $email);
         $o_user->add();
-        $resp = $o_user->to_string();
+        $resp=$o_user->to_string();
         echo json_encode($resp);
       }
     }
@@ -22,18 +51,15 @@
       try{
         $users_key_selected = get_users_keys_selected();
 
-        $userkeyarr = $_POST["user_keyarr"];
-        
+        $userkeyarr=$_POST["user_keyarr"];
         foreach($userkeyarr as $user){
+          //$user_selected = user::get_user($userkeyarr);
           user::delete($user);
-          /*
-            $user_selected = user::get_user($userkeyarr);
-            if(user::delete($userkeyarr)){
-              $message = "el(los) usuario(s) fueron eliminados";
-            } else{
-              $message = "el(los) usuario(s) no fueron eliminados";
-            }
-          */
+          /*if(user::delete($userkeyarr)){
+            $message = "el(los) usuario(s) fueron eliminados";
+          } else{
+            $message = "el(los) usuario(s) no fueron eliminados";
+          }*/
         }
       }
       catch(PDOException $e){
@@ -46,10 +72,11 @@
       $users;
 
       $users = user::find($search);
-      
-      echo json_encode($users); // envia los datos a AJAX como respuesta
+
+      echo json_encode($users); // codigo de capa logica no interactua con la capa interfaz, <echo> no va.
     }
   }
+}
 
 class user{
   

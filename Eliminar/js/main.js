@@ -1,65 +1,67 @@
 
-$('#button_search').addEventListener("click", () => {
-  var search = $('#search').val();
-  var pathname = "Buscar";
-  var parameters = {
-    "search" : search,
-    "pathname" : pathname
-  };
-
-  Send(parameters, Find);
-});
-
-function Send(parameters, function_parameter){
-  $.ajax({
-    url: "http://localhost/menu-of-add-delete-and-find-users/class/user.php",
-    type: "post",
-    data: parameters,
-    success: function_parameter(data) 
-  });
-}
-
-function Find(data){
-  var response = JSON.parse(data);
-  var table_tbody;
-  for(var i = 0; i < response.length; i++){
-    table_tbody += '<tr class="list-users__tr"><td class="list-users__td">' + response[i].Name + '</td><td class="list-users__td">' + response[i].Surname + '</td><td class="list-users__td">' + response[i].Email + '</td><td class="list-users__td">' + response[i].UserKey + '</td><td class="list-users__td"> <input type="checkbox" name="' + response[i].UserKey + '" id="' + response[i].UserKey + '"> </td></tr>';
-  }
-  
-  $('tbody.list-users__tbody').html(table_tbody);
+function Buscar(){
+    var search=$('#search').val();
+    var pathname = "Buscar";
+    var parametros={
+        "search" : search,
+        "pathname" : pathname
+    };
+    $.ajax({
+        url: "http://localhost/menu-of-add-delete-and-find-users/class/user.php",
+        type: "post",  
+        data: parametros,
+        success: function(data){
+            var resp=JSON.parse(data);
+            var tabla;
+            for(var i=0;i<resp.length;i++){
+                tabla+='<tr class="list-users__tr"><td class="list-users__td">'+resp[i].Name+'</td><td class="list-users__td">'+resp[i].Surname+
+                '</td><td class="list-users__td">'+resp[i].Email+'</td><td class="list-users__td">'+resp[i].UserKey+'</td><td class="list-users__td"> <input type="checkbox" name="'
+                +resp[i].UserKey+'" id="'+resp[i].UserKey+'"> </td></tr>';
+            }
+            /*var p=document.getElementsByClassName("list-users__tbody");
+            p.html(tabla);*/
+            $('tbody.list-users__tbody').html(tabla);
+        }
+    });
+    return false;
 }
 
 function Eliminar(){
+    //alert("d");
+    var pathname = window.location.pathname;
+    var formel=document.forms["form"];
+    var chk=formel.querySelectorAll('input[type="checkbox"]:checked');
+    var uselim=[];
+    chk.forEach(i => {
+        chkd=i.id;
+        uselim.push(chkd);
+        alert(uselim);   
+    });
+    /*for(var i=0; i<chk.lenght; i++){
+        chkd=Number(chk[i].id);
+        uselim.push(chkd);
+        alert(chkd);
+    }*/
+    var search=$('#search').val();
+    var user=document.getElementsByName("user");
     
-  var pathname = window.location.pathname;
-  var form = document.forms["form"];
-  var checkes_checked = form.querySelectorAll('input[type="checkbox"]:checked');
-  var arrays_users_key = [];
-  var user_key;
-  checkes_checked.forEach(checkHTML => {
-    user_key = checkHTML.id;
-    arrays_users_key.push(user_key);
-    alert(checkHTML);   
-  });
-  
-  var search = $('#search').val();
-  var user = document.getElementsByName("user");
-  
-  var parametros = {
-    "pathname" : pathname,
-    "search" : search,
-    "user" : user,
-    "user_keyarr" : arrays_users_key
-  };
+    var parametros={
+        "pathname" : pathname,
+        "search" : search,
+        "user" : user,
+        "user_keyarr" : uselim
+    };
 
-  $.ajax({
-    url: "http://localhost/menu-of-add-delete-and-find-users/class/user.php",
-    type: "post",
-    data: parametros,
-    success: function(data){
-      
-    }
-  });
+    $.ajax({
+        url: "http://localhost/MYS/menu-of-add-delete-and-find-users/class/user.php",
+        type: "post",
+        data: parametros,
+        success: function(data){
+            alert("zz");
+            //Buscar();
+            alert("rr");
+        }
+    });
 
-  return false;
+    return false;
 }
