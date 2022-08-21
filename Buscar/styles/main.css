@@ -1,67 +1,49 @@
-*{
-  padding: 0;
-  margin: 0;
-  box-sizing: border-box;
-}
-
 body{
-	
-  display: grid;
   grid-template-rows: repeat(3, auto);
-  align-items: center;
-  align-content: center;
-  justify-items: center;
-  justify-content: center;
-  gap: 30px;
-
-	background-color: #634646;
-}
-
-.header{
-  margin-top: 30px;
-}
-
-.control{
-	padding: 10px;
-	
-  font-family: arial;
-	font-size: 15px;
-	font-weight: bold;
-	border-radius: 50px;
-	background-color: beige;
-	border-color: rgb(173, 173, 55);
 }
 
 .form{
-	display: grid;
-  grid-template-rows: repeat(2, auto);
-  gap: 20px;
+  grid-template-rows: repeat(3, auto);
 }
 
-.form__submit{
-  
-  background-color: beige;
-  border-width: 5px;
-  border-color: beige;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
+.header{
+  margin: 4px;
+}
+
+.nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 60px;
+}
+
+.controls{
+  gap: 20px;
 }
 
 .filter{
   display: flex;
   flex-direction: column;
-  background-color: beige;
-  border-radius: 20px;
-  border: solid rgb(177, 177, 0);
+  gap: 15px;
 }
   .filter__instruction{
-    padding: 10px;
-    
     font-family: arial;
-    font-size: 50px;
+    font-size: 25px;
     font-weight: bold;
     color: #926026;
+  }
+  .filter__label{
+    background: #959595;;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 1px;
+  }
+  .filter__label_checked{
+    background: #cdb613;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 1px;
   }
 
 .controls{
@@ -71,29 +53,14 @@ body{
   justify-content: center;
 }
 
-/* #submit{
-  background-color: beige;
-  border-width: 5px;
-  border-color: beige;
-  font-size: 20px;
-  font-weight: bold;
-  cursor: pointer;
-} */
-
 .nav__menu{
-	background-color: beige;
-	border-color: beige;
-	border-width: 5px;
+  text-decoration: none;
+  color: black;
+	background: beige;
+	border: solid rgb(216, 216, 122) 5px;
+  padding: 5px;
 	border-radius: 10px;
 	font-weight: bold;
 	font-size: 20px;
 	cursor: pointer;
-}
-
-.list-users{
-	background-color: beige;
-	font-family: arial;
-	font-size: 20px;
-	padding: 10px;
-	border-color: #926026;
 }
