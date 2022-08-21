@@ -1,0 +1,160 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+
+  --body__background: #634646;
+  --body__display: grid;
+  --body__align-items: center;
+  --body__align-content: center;
+  --body__justify-items: center;
+  --body__justify-content: center;
+  --body__gap: 30px;
+
+  --form__display: grid;
+  --form__gap: 20px;
+  --form__justify-items: center;
+    --form_submit__background: beige;
+    --form_submit__padding: 2px;
+    --form_submit__border: solid rgb(173, 173, 55) 2px;
+    --form_submit__border-radius: 30px;
+    --form_submit__width: 180px;
+    --form_submit__font-size: 5mm;
+    --form_submit__cursor: pointer;
+  
+  --container__padding: 10px;
+  --container__border-radius: 10px;
+  --container__background: beige;
+  --container__border: solid rgb(173, 173, 55);
+
+  --search_input__background: beige;
+  --search_input__border: solid rgb(173, 173, 55);
+  --search_input__border-radius: 10px;
+  --search_input__padding: 10px;
+  --search_input__width: 310px;
+  --search_input__font-size: 20px;
+
+  --list-users__name_width: 150px;
+  --list-users__name_border-left: solid black 2px;
+  --list-users__surname_width: 150px;
+  --list-users__email_width: 350px;
+  --list-users__id_width: 30px;
+
+  --list-users__th: rgb(126, 128, 8);
+  --list-users__td-light: rgb(209 211 135);
+  --list-users__td-dark: rgb(169 171 82);
+
+  --footer__display: flex;
+  --footer__flex-direction: column;
+  --footer__justify-content: center;
+  --footer__align-items: center;
+  --footer__width: 1365px;
+  --footer__height: 250px;
+  --footer__background: #795f17;
+  --footer__border-top: solid black 7px;
+
+  --links_link__display: flex;
+  --links_link__flex-direction: column;
+  --links_link__width: auto;
+  --links_link__text-decoration: none;
+  --links_link__color: black;
+}
+
+body{
+  display:         var(--body__display        );
+  align-items:     var(--body__align-items    );
+  align-content:   var(--body__align-content  );
+  justify-items:   var(--body__justify-items  );
+  justify-content: var(--body__justify-content);
+  gap:             var(--body__gap            );
+
+	background:      var(--body__background);
+}
+
+.form{
+	display:       var(--form__display);
+  gap:           var(--form__gap);
+  justify-items: var(--form__justify-items);
+} 
+  .form__submit{
+    background:   var(--form_submit__background   );
+    padding:      var(--form_submit__padding      );
+    width:        var(--form_submit__width        );
+    border:       var(--form_submit__border       );
+    border-radius:var(--form_submit__border-radius);
+    font-size:    var(--form_submit__font-size    );
+    cursor:       var(--form_submit__cursor       );
+  }
+
+.container{
+  padding:       var(--container__padding      );
+  
+  border:        var(--container__border       );
+  border-radius: var(--container__border-radius);
+  background:    var(--container__background   );
+}
+
+.search__input{
+  background:    var(--search_input__background   );
+  border:        var(--search_input__border       );
+  border-radius: var(--search_input__border-radius);
+  padding:       var(--search_input__padding      );
+  width:         var(--search_input__width        );
+  font-size:     var(--search_input__font-size    );
+}
+
+.list-users{
+	background: beige;
+	border: solid black 4px;
+  border-radius: 15px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 5mm;
+	padding: 10px;
+}
+  .list-users__tr{
+    border-bottom: solid black 2px;
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    justify-content: space-between;
+  }
+  .list-users__th{
+    border-top: solid black 2px;
+    border-right: solid black 2px;
+    background: rgb(146 149 0);
+  }
+  .list-users__td{
+    border-right: solid black 2px;
+    padding-left: 5px;
+  }
+  #list-users__name{
+    width: var(--list-users__name_width);
+    border-left: var(--list-users__name_border-left);
+  }
+  #list-users__surname{
+    width: var(--list-users__surname_width);
+  }
+  #list-users__email{
+    width: var(--list-users__email_width);
+  }
+  #list-users__id{
+    width: var(--list-users__id_width);
+  }
+
+.footer{
+  display:         var(--footer__display        );
+  width:           var(--footer__width          );
+  height:          var(--footer__height         );
+  background:      var(--footer__background     );
+  align-items:     var(--footer__align-items    );
+  flex-direction:  var(--footer__flex-direction );
+  justify-content: var(--footer__justify-content);
+  border-top:      var(--footer__border-top     );
+}
+  .links__link{
+    display:        var(--links_link__display        );
+    flex-direction: var(--links_link__flex-direction );
+    width:          var(--links_link__width          );
+    text-decoration:var(--links_link__text-decoration);
+    color:          var(--links_link__color);;
+  }
