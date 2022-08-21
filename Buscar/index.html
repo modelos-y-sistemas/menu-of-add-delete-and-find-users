@@ -4,58 +4,78 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  
+  <!-- libs -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="js/main.js"></script>
+
+  <!-- styles links -->
+  <link rel="stylesheet" type="text/css" href="styles/main.css">
+  <link rel="stylesheet" type="text/css" href="../generic/generic.css">
+  
   <title>Buscar Usuario</title>
 </head>
 <body>
   
   <header class="header">
     <nav class="nav">
-      <button class="nav__menu" onclick="window.location.href = '../index.php'"> Volver al menú </button>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/."> Volver al menú </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/Agregar/."> Agregar </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/Buscar/."> Buscar </a>
+      <a class="nav__menu" href="http://localhost/menu-of-add-delete-and-find-users/Eliminar/."> Eliminar </a>
     </nav>
   </header>
   
-  <form  method="post" class="form" onsubmit="return state();">
+  <form  class="container form" method="post" onsubmit="state(event);">
     <div class="filter">
-      <p class="filter__instruction">Filtrar por:</p>
+      <p class="filter__instruction">Filtrar por</p>
       <div class="controls">
         <div class="control">
-          <label class="filter__label" for="name">Nombre</label>
-          <input class="filter__input" type="checkbox" name="name" id="name">
+          <label class="filter__label" for="inp_name"    id="lbl_name">    Nombre   </label>
+          <input class="filter__input" type="checkbox"   id="inp_name"    name="name"    hidden>
         </div>
         <div class="control">
-          <label class="filter__label" for="surname">Apellido</label>
-          <input class="filter__input" type="checkbox" name="surname" id="surname">
+          <label class="filter__label" for="inp_surname" id="lbl_surname"> Apellido </label>
+          <input class="filter__input" type="checkbox"   id="inp_surname" name="surname" hidden>
         </div>
         <div class="control">
-          <label class="filter__label" for="email">E-mail</label>
-          <input class="filter__input" type="checkbox" name="email" id="email">
+          <label class="filter__label" for="inp_email"   id="lbl_email">   Email   </label>
+          <input class="filter__input" type="checkbox"   id="inp_email"   name="email"   hidden>
         </div>
         <div class="control">
-          <label class="filter__label" for="userKey">ID</label>
-          <input class="filter__input" type="checkbox" name="userKey" id="userKey">
+          <label class="filter__label" for="inp_userKey" id="lbl_userKey"> ID       </label>
+          <input class="filter__input" type="checkbox"   id="inp_userKey" name="userKey" hidden>
         </div>
       </div>
     </div>
-    <div class="search control">
-      <label class="search__label" for="search">Buscar</label>
-      <input class="search__input" type="text" name="search" id="search">
-    </div>
+    <input class="search__input" type="text" id="search" name="search" placeholder="Busque Aquí">
     <input class="form__submit" type="submit" name="submit" value="Buscar Usuario(s)">
   </form>
-  <table class="list-users" border="5">
+  <table class="list-users">
     <thead class="list-users__thead">
       <tr class="list-users__tr">
-        <th class="list-users__th"> Nombre </th>
-        <th class="list-users__th"> Apellido </th>
-        <th class="list-users__th"> E-mail </th>
-        <th class="list-users__th"> ID </th>
+        <th class="list-users__th" id="list-users__name"> Nombre   </th>
+        <th class="list-users__th" id="list-users__surname"> Apellido </th>
+        <th class="list-users__th" id="list-users__email"> Email   </th>
+        <th class="list-users__th" id="list-users__id"> ID       </th>
       </tr>
     </thead>
     <tbody class="list-users__tbody">
     </tbody>
   </table>
+
+  <footer class="footer">
+    <div class="links">
+      <a href="https://github.com/modelos-y-sistemas/menu-of-add-delete-and-find-users" class="links__link" target="_blank">
+        <img src="../img/github.svg">
+        Este Proyecto
+      </a>
+    </div>
+    <p class="copyright">
+      Copyright <script> var d = new Date(); document.querySelector(".copyright").innerHTML += d.getUTCFullYear(); </script>
+    </p>
+  </footer>
+  <!-- links scripts -->
+  <script src="js/main.js"></script>
+
 </body>
 </html>
