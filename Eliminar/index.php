@@ -1,63 +1,4 @@
-<?php
-  
-  $message = "";
-/*
-  if($_POST){
-
-    include ('../class/user.php');
-    $submit_search = $_POST['submit_search'];
-    $submit_delete = $_POST['submit_delete'];
-    
-    if($submit_search){
-      $search = $_POST['search'];
-      $users = user::find($search);
-    }
-
-    if($submit_delete){
-      
-      try{
-        $users_key_selected = get_users_keys_selected();
-        
-        foreach($users_key_selected as $user_key_selected){
-          $user_selected = user::get_user($user_key_selected);
-          if(user::delete($user_selected)){
-            $message = "el(los) usuario(s) fueron eliminados";
-          } else{
-            $message = "el(los) usuario(s) no fueron eliminados";
-          }
-        }
-      }
-      catch(PDOException $e){
-        $message = "ERROR: No se puede eliminar el(los) usuario(s)";
-      }
-    }
-  }
-
-  function get_users_keys_selected(){
-    
-    $search = $_POST['search'];
-    $i = 0;
-
-    $users = user::find($search);
-    $users_keys = array();
-
-    foreach($users as $user){
-      
-      $number_key = $user['UserKey'];
-      
-      if(isset($_POST['user' . $number_key])){ // cada check tiene como 'name' -> "user + <UserKey>"
-        $users_keys[$i] = $number_key;
-        $i++;
-      }
-    }
-    foreach($users_keys as $key){
-      // echo $key . "<br>";
-    }
-
-    return $users_keys;
-  }
-*/
-?>
+<?php $message = ""; ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -117,26 +58,10 @@
         </tr>
       </thead>
       <tbody class="list-users__tbody">
-        <?php
-          //foreach($users as $user){
-        ?>
-          <tr class="list-users__tr">
-            <td class="list-users__td"> <?php //echo $user['Name']; ?> </td>
-            <td class="list-users__td"> <?php //echo $user['Surname']; ?> </td>
-            <td class="list-users__td"> <?php //echo $user['Email']; ?> </td>
-            <td class="list-users__td"> <?php //echo $user['UserKey']; ?> </td>
-            <td class="list-users__td"> <input type="checkbox" name="user<?php //echo $user['UserKey']; ?>" id="user<?php //echo $user['UserKey']; ?>"> </td>
-          </tr>
-        <?php    
-          //}
-        ?>
       </tbody>
     </table>
-
     <input class="form__submit" type="submit" name="submit_delete" id="submit_delete" value="Eliminar Usuario(s)">
   </form>
-  
   <p id="message"> <?= $message; ?> </p>
-
 </body>
 </html>
