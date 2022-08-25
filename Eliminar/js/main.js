@@ -36,7 +36,7 @@ function Eliminar(){
     chk.forEach(i => {
         chkd=i.id;
         uselim.push(chkd);
-        alert(uselim);   
+        //alert(uselim);   
     });
     /*for(var i=0; i<chk.lenght; i++){
         chkd=Number(chk[i].id);
@@ -58,9 +58,9 @@ function Eliminar(){
         type: "post",
         data: $('#form').serialize(),
         success: function(data){
-            alert("zz");
-            //Buscar();
-            alert("rr");
+            //alert("zz");
+            Buscar();
+            //alert("rr");
         }
     });
 
